@@ -1,12 +1,16 @@
 import React from "react";
+import CssBaseline from '@mui/material/CssBaseline';
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
+import Hero from "../components/Hero";
 import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
 import FullWidthImage from "../components/FullWidthImage";
+import StickyFooter from "../components/Hero";
+import { dark } from "../configs/themes.config";
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
@@ -21,56 +25,63 @@ export const IndexPageTemplate = ({
   const heroImage = getImage(image) || image;
 
   return (
-    <div>
-      <FullWidthImage img={heroImage} title={title} subheading={subheading} />
-      <section className="section section--gradient">
-        <div className="container">
-          <div className="section">
-            <div className="columns">
-              <div className="column is-10 is-offset-1">
-                <div className="content">
+    <>
+      <Hero title={heading} subtitle={subheading} blurb={description} img={heroImage} theme={dark} />
+      <h2>CTA 1</h2>
+      <h2>About</h2>
+      <h2>Problem</h2>
+      <h2>Solution</h2>
+      <h2>CTA 2</h2>
+        {/* <FullWidthImage img={heroImage} title={title} subheading={subheading} />
+        <section className="section section--gradient">
+          <div className="container">
+            <div className="section">
+              <div className="columns">
+                <div className="column is-10 is-offset-1">
                   <div className="content">
-                    <div className="tile">
-                      <h1 className="title">{mainpitch.title}</h1>
+                    <div className="content">
+                      <div className="tile">
+                        <h1 className="title">{mainpitch.title}</h1>
+                      </div>
+                      <div className="tile">
+                        <h3 className="subtitle">{mainpitch.description}</h3>
+                      </div>
                     </div>
-                    <div className="tile">
-                      <h3 className="subtitle">{mainpitch.description}</h3>
+                    <div className="columns">
+                      <div className="column is-12">
+                        <h3 className="has-text-weight-semibold is-size-2">
+                          {heading}
+                        </h3>
+                        <p>{description}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="columns">
+                    <Features gridItems={intro.blurbs} />
+                    <div className="columns">
+                      <div className="column is-12 has-text-centered">
+                        <Link className="btn" to="/products">
+                          See all products
+                        </Link>
+                      </div>
+                    </div>
                     <div className="column is-12">
                       <h3 className="has-text-weight-semibold is-size-2">
-                        {heading}
+                        Latest stories
                       </h3>
-                      <p>{description}</p>
-                    </div>
-                  </div>
-                  <Features gridItems={intro.blurbs} />
-                  <div className="columns">
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/products">
-                        See all products
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      Latest stories
-                    </h3>
-                    <BlogRoll />
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/blog">
-                        Read more
-                      </Link>
+                      <BlogRoll />
+                      <div className="column is-12 has-text-centered">
+                        <Link className="btn" to="/blog">
+                          Read more
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section> */}
+    </>
+
   );
 };
 
