@@ -5,12 +5,25 @@ import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
-import Hero from "../components/Hero";
+import LayoutJoy from "../components/LayoutJoy"
+import Hero from "../components/Heroes/Hero";
 import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
 import FullWidthImage from "../components/FullWidthImage";
-import StickyFooter from "../components/Hero";
-import { dark } from "../configs/themes.config";
+import StickyFooter from "../components/Heroes/Hero";
+import { dark } from "../configs/themes.mui.config";
+import HeroLeft01 from "../components/Heroes/HeroLeft01";
+import Cta01 from "../components/CTAs/Cta01";
+import Content01 from "../components/Content/Content01";
+import ContentWithList from "../components/Content/ContentWithList";
+import Section from "../components/Base/Section";
+import TwoSidedLayout from "../components/Base/TwoSidedLayout";
+import { Button, Card, Container, Stack, styled, Typography } from "@mui/joy";
+import Product_FullWidth from "../components/Product/ProductFullWidth";
+import { ArrowForward } from "@mui/icons-material";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import IconList from "../components/Base/IconList";
+import ProductCard from "../components/Product/ProductCard";
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
@@ -23,16 +36,103 @@ export const IndexPageTemplate = ({
   intro,
 }) => {
   const heroImage = getImage(image) || image;
+  const ListText = styled(Typography)({
+    textWrap: "initial !important",
+  });
 
   return (
     <>
-      <Hero title={heading} subtitle={subheading} blurb={description} img={heroImage} theme={dark} />
-      <h2>CTA 1</h2>
-      <h2>About</h2>
+      <HeroLeft01 title={heading} subtitle={subheading} blurb={description} img={heroImage} />
+      <Cta01 title={heading} subtitle={subheading} blurb={description} img={heroImage} />
+      <Content01 reversed title={heading} subtitle={subheading} blurb={description} img={heroImage} />
+
+      <Section theme={"lightestJoy"}>
+        <Container sx={{ py: 16 }}>
+          <Typography level="h2" fontSize={"xl4"}>Icon List Section</Typography>
+          <Stack direction={["column", "column", "row"]} gap={4}>
+            <ContentWithList title={heading} blurb={description} sheetVariant={"soft"} />
+            <ContentWithList title={heading} blurb={description} />
+          </Stack>
+        </Container>
+      </Section>
       <h2>Problem</h2>
       <h2>Solution</h2>
+
+      <Section>
+        <Container maxWidth="xl" sx={{p: 16}}>
+          <Typography level="h2" textAlign={"center"} pb={8}>Products - Full Width</Typography>
+          <Stack gap={4}>
+            <Product_FullWidth title={heading} subtitle={subheading} blurb={description} img={heroImage} >
+              <Typography fontSize="lg" fontWeight="lg">
+                {subheading}
+              </Typography>
+              <Typography
+                level="h2"
+                fontWeight="xl"
+                fontSize="xl4"
+                // fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
+              >
+                {title}
+              </Typography>
+              <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg">
+                {description}
+              </Typography>
+              <IconList icon={<CheckCircleIcon color="success" />} >
+                <ListText>Volkswagen ipsum Beetle sit amet, Kombi adipiscing elit. Fusce Microbus vintage sapien, et Käfer leo posuere et.</ListText>
+                <ListText>Volkswagen ipsum Beetle sit amet, Kombi adipiscing elit. Fusce Microbus vintage sapien, et Käfer leo posuere et.</ListText>
+                <ListText>Volkswagen ipsum Beetle sit amet, Kombi adipiscing elit. Fusce Microbus vintage sapien, et Käfer leo posuere et.</ListText>
+              </IconList>
+              <Button endDecorator={<ArrowForward />} size={"lg"}>
+                Learn More
+              </Button>
+            </Product_FullWidth>
+            <Product_FullWidth title={heading} subtitle={subheading} blurb={description} img={heroImage} >
+              <Typography fontSize="lg" fontWeight="lg">
+                {subheading}
+              </Typography>
+              <Typography
+                level="h2"
+                fontWeight="xl"
+                fontSize="xl4"
+                // fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
+              >
+                {title}
+              </Typography>
+              <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg">
+                {description}
+              </Typography>
+              <IconList icon={<CheckCircleIcon color="success" />} >
+                <ListText>Volkswagen ipsum Beetle sit amet, Kombi adipiscing elit. Fusce Microbus vintage sapien, et Käfer leo posuere et.</ListText>
+                <ListText>Volkswagen ipsum Beetle sit amet, Kombi adipiscing elit. Fusce Microbus vintage sapien, et Käfer leo posuere et.</ListText>
+                <ListText>Volkswagen ipsum Beetle sit amet, Kombi adipiscing elit. Fusce Microbus vintage sapien, et Käfer leo posuere et.</ListText>
+              </IconList>
+              <Button endDecorator={<ArrowForward />} size={"lg"}>
+                Learn More
+              </Button>
+            </Product_FullWidth>
+          </Stack>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container maxWidth="xl" sx={{p: 16}}>
+          <Typography level="h2" textAlign={"center"} pb={8}>Products - Cards</Typography>
+          <Stack
+            direction={["column", "column", "row" ]}
+            gap={4}
+            sx={{
+
+            }}
+          >
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </Stack>
+        </Container>
+      </Section>
+
       <h2>CTA 2</h2>
-        {/* <FullWidthImage img={heroImage} title={title} subheading={subheading} />
+      {/* <FullWidthImage img={heroImage} title={title} subheading={subheading} />
         <section className="section section--gradient">
           <div className="container">
             <div className="section">
@@ -101,7 +201,7 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
+    <LayoutJoy>
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
@@ -111,7 +211,7 @@ const IndexPage = ({ data }) => {
         description={frontmatter.description}
         intro={frontmatter.intro}
       />
-    </Layout>
+    </LayoutJoy>
   );
 };
 
