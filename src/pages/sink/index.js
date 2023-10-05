@@ -82,13 +82,19 @@ export const KitchenSinkTemplate = ({
           </ButtonGroup>
         </Stack>
       </Container>
+
+
       <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} maxWidth="xl" />
       <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} theme={"light"} />
       <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} theme={"colored"} />
       <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} theme={"dark"} />
       <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} theme={"darkest"} />
-      <Cta01 title={heading} subtitle={subheading} blurb={description} img={heroImage} />
-      <Content01 reversed title={heading} subtitle={subheading} blurb={description} img={heroImage} />
+
+
+      <Cta01 title={heading} subtitle={subheading} blurb={description} img={heroImage} theme={"darkest"} />
+
+
+      <Content01 reversed title={heading} subtitle={subheading} blurb={description} img={heroImage} theme="colored" />
 
       <Section theme={"light"}>
         <Container sx={{ py: 16 }}>

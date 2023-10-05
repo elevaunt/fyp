@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import { Container, Stack } from '@mui/material';
 import Link from '@mui/material/Link';
 import tpcLogoStacked from "../img/tpc-vertical-dark-green.png";
+import Section from './Base/Section';
 
 function Copyright() {
   return (
@@ -20,44 +21,46 @@ function Copyright() {
 
 export default function Footer() {
   return (
-    <Box
-      component="footer"
-      sx={{
-        py: 3,
-        px: 2,
-        mt: 'auto',
-        // backgroundColor: (theme) =>
-        //   theme.palette.mode === 'dark'
-        //     ? theme.palette.grey[200]
-        //     : theme.palette.grey[800],
-        maxWidth: "100%",
-      }}
-    >
+    <Section theme="darkest">
       <Box
+        component="footer"
         sx={{
-          maxWidth: "sm",
+          py: 3,
           px: 2,
-          py: 4,
-          mx: "auto",
+          mt: 'auto',
+          // backgroundColor: (theme) =>
+          //   theme.palette.mode === 'dark'
+          //     ? theme.palette.grey[200]
+          //     : theme.palette.grey[800],
+          maxWidth: "100%",
         }}
       >
-        <Stack
+        <Box
           sx={{
-            alignItems: "center",
-            textAlign: "center",
+            maxWidth: "sm",
+            px: 2,
+            py: 4,
+            mx: "auto",
           }}
         >
-          <img 
-            src={tpcLogoStacked}
-            alt="The Porters Coaching" 
-            style={{ maxWidth: "300px" }} 
-          />
-          <Typography variant="body1" mt={6}>
-            My sticky footer can be found here.
-          </Typography>
-          <Copyright />
-        </Stack>
+          <Stack
+            sx={{
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <img
+              src={tpcLogoStacked}
+              alt="The Porters Coaching"
+              style={{ maxWidth: "300px" }}
+            />
+            <Typography variant="body1" mt={6}>
+              My sticky footer can be found here.
+            </Typography>
+            <Copyright />
+          </Stack>
+        </Box>
       </Box>
-    </Box>
+    </Section>
   );
 }

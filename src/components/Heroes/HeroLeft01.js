@@ -7,6 +7,7 @@ import ArrowForward from '@mui/icons-material/ArrowForward';
 import TwoSidedLayout from '../Base/TwoSidedLayout';
 import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import { ButtonGroup } from "@mui/joy";
+import Section from '../Base/Section';
 
 export default function HeroLeft01({
   theme,
@@ -19,29 +20,31 @@ export default function HeroLeft01({
 }) {
   const imgRatio = img?.width ? img.width / img.height : 3 / 4;
   return (
-    <TwoSidedLayout ratio={imgRatio} maxWidth={maxWidth} maxHeight={750} basis={"50%"} img={img} py={16} theme={theme}>
-      <Typography level="h3" fontSize="lg" fontWeight="lg" textColor="text.secondary">
-        {subtitle}
-      </Typography>
-      <Typography
-        level="h1"
-        fontWeight="xl"
-        fontSize="xl7"
-      >
-        {title}
-      </Typography>
-      <Typography fontSize="lg" lineHeight="lg">
-        {blurb}
-      </Typography>
-      <ButtonGroup spacing={2} variant="solid">
-        <Button startDecorator={<OtherHousesIcon />} size={"lg"} color="primary">
-          {buttonText || "Primary"}
-        </Button>
-        <Button startDecorator={<OtherHousesIcon />} size={"lg"} color="secondary">
-          {buttonText || "Secondary"}
-        </Button>
-      </ButtonGroup>
-      <OtherHousesIcon fontSize={"xl4"} />
-    </TwoSidedLayout>
+    <Section theme={theme}>
+      <TwoSidedLayout ratio={imgRatio} maxWidth={maxWidth} maxHeight={750} basis={"50%"} img={img} py={16}>
+        <Typography level="h3" fontSize="lg" fontWeight="lg" textColor="text.secondary">
+          {subtitle}
+        </Typography>
+        <Typography
+          level="h1"
+          fontWeight="xl"
+          fontSize="xl7"
+        >
+          {title}
+        </Typography>
+        <Typography fontSize="lg" lineHeight="lg">
+          {blurb}
+        </Typography>
+        <ButtonGroup spacing={2} variant="solid">
+          <Button startDecorator={<OtherHousesIcon />} size={"lg"} color="primary">
+            {buttonText || "Primary"}
+          </Button>
+          <Button startDecorator={<OtherHousesIcon />} size={"lg"} color="secondary">
+            {buttonText || "Secondary"}
+          </Button>
+        </ButtonGroup>
+        <OtherHousesIcon fontSize={"xl4"} />
+      </TwoSidedLayout>
+    </Section>
   );
 }
