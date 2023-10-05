@@ -15,10 +15,11 @@ export default function HeroLeft01({
   blurb,
   buttonText,
   img,
+  maxWidth,
 }) {
   const imgRatio = img?.width ? img.width / img.height : 3 / 4;
   return (
-    <TwoSidedLayout ratio={imgRatio} maxHeight={750} basis={"50%"} img={img} py={16} theme={theme}>
+    <TwoSidedLayout ratio={imgRatio} maxWidth={maxWidth} maxHeight={750} basis={"50%"} img={img} py={16} theme={theme}>
       <Typography level="h3" fontSize="lg" fontWeight="lg" textColor="text.secondary">
         {subtitle}
       </Typography>

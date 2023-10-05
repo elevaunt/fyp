@@ -59,7 +59,7 @@ export const IndexPageTemplate = ({
         <Container sx={{ py: 16 }}>
           <Typography level="h2" fontSize={"xl4"}>Icon List Section</Typography>
           <Stack direction={["column", "column", "row"]} gap={4}>
-            <ContentWithList title={heading} blurb={description} sheetVariant={"soft"} />
+            <ContentWithList title={heading} blurb={description} variant={"soft"} />
             <ContentWithList title={heading} blurb={description} />
           </Stack>
         </Container>

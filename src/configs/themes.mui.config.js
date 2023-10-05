@@ -113,150 +113,147 @@ const brandShades = {
   },
 };
 
-
-const commonTheme = (prefix) => ({
-  cssVarPrefix: prefix,
-  colorSchemes: {
-    palette: {
-      primary: {
-        // plain
-        plainColor: `var(--${prefix}-palette-button-primary-500)`,
-        plainHoverBg: `var(--${prefix}-palette-button-primary-50)`,
-        plainActiveBg: `var(--${prefix}-palette-button-primary-100)`,
-        plainDisabledColor: `var(--${prefix}-palette-neutral-100)`,
-        // outline
-        outlinedColor: `var(--${prefix}-palette-primary-500)`,
-        outlinedBorder: `var(--${prefix}-palette-primary-300)`,
-        outlinedHoverBg: `var(--${prefix}-palette-primary-100)`,
-        outlinedActiveBg: `var(--${prefix}-palette-primary-200)`,
-        outlinedDisabledColor: `var(--${prefix}-palette-neutral-100)`,
-        outlinedDisabledBorder: `var(--${prefix}-palette-neutral-50)`,
-        // soft
-        softColor: `var(--${prefix}-palette-primary-700)`,
-        softBg: `var(--${prefix}-palette-primary-100)`,
-        softHoverBg: `var(--${prefix}-palette-primary-200)`,
-        softActiveColor: `var(--${prefix}-palette-primary-800)`,
-        softActiveBg: `var(--${prefix}-palette-primary-300)`,
-        softDisabledColor: `var(--${prefix}-palette-neutral-300)`,
-        softDisabledBg: `var(--${prefix}-palette-neutral-25)`,
-        // solid
-        solidColor: `var(--${prefix}-palette-common-white)`,
-        solidBg: `var(--${prefix}-palette-button-primary-500)`,
-        solidHoverBg: `var(--${prefix}-palette-button-primary-600)`,
-        solidActiveBg: `var(--${prefix}-palette-button-primary-700)`,
-        solidDisabledColor: `var(--${prefix}-palette-neutral-300)`,
-        solidDisabledBg: `var(--${prefix}-palette-neutral-50)`,
+const createTheme = (prefix, opts) => {
+  const {primary: primaryLight, secondary: secondaryLight, ...paletteLight} = opts?.colorSchemes.light.palette;
+  return {
+    cssVarPrefix: prefix,
+    colorSchemes: {
+      light: {
+        palette: {
+          primary: {
+            ...primaryLight,
+            // plain
+            plainColor: `var(--${prefix}-palette-button-primary-500)`,
+            plainHoverBg: `var(--${prefix}-palette-button-primary-50)`,
+            plainActiveBg: `var(--${prefix}-palette-button-primary-100)`,
+            plainDisabledColor: `var(--${prefix}-palette-neutral-100)`,
+            // outline
+            outlinedColor: `var(--${prefix}-palette-primary-500)`,
+            outlinedBorder: `var(--${prefix}-palette-primary-300)`,
+            outlinedHoverBg: `var(--${prefix}-palette-primary-100)`,
+            outlinedActiveBg: `var(--${prefix}-palette-primary-200)`,
+            outlinedDisabledColor: `var(--${prefix}-palette-neutral-100)`,
+            outlinedDisabledBorder: `var(--${prefix}-palette-neutral-50)`,
+            // soft
+            softColor: `var(--${prefix}-palette-primary-700)`,
+            softBg: `var(--${prefix}-palette-primary-100)`,
+            softHoverBg: `var(--${prefix}-palette-primary-200)`,
+            softActiveColor: `var(--${prefix}-palette-primary-800)`,
+            softActiveBg: `var(--${prefix}-palette-primary-300)`,
+            softDisabledColor: `var(--${prefix}-palette-neutral-300)`,
+            softDisabledBg: `var(--${prefix}-palette-neutral-25)`,
+            // solid
+            solidColor: `var(--${prefix}-palette-common-white)`,
+            solidBg: `var(--${prefix}-palette-button-primary-500)`,
+            solidHoverBg: `var(--${prefix}-palette-button-primary-600)`,
+            solidActiveBg: `var(--${prefix}-palette-button-primary-700)`,
+            solidDisabledColor: `var(--${prefix}-palette-neutral-300)`,
+            solidDisabledBg: `var(--${prefix}-palette-neutral-50)`,
+          },
+          secondary: {
+            ...secondaryLight,
+            // plain
+            plainColor: `var(--${prefix}-palette-button-secondary-500)`,
+            plainHoverBg: `var(--${prefix}-palette-button-secondary-50)`,
+            plainActiveBg: `var(--${prefix}-palette-button-secondary-100)`,
+            plainDisabledColor: `var(--${prefix}-palette-neutral-100)`,
+            // outline
+            outlinedColor: `var(--${prefix}-palette-secondary-500)`,
+            outlinedBorder: `var(--${prefix}-palette-secondary-300)`,
+            outlinedHoverBg: `var(--${prefix}-palette-secondary-100)`,
+            outlinedActiveBg: `var(--${prefix}-palette-secondary-200)`,
+            outlinedDisabledColor: `var(--${prefix}-palette-neutral-100)`,
+            outlinedDisabledBorder: `var(--${prefix}-palette-neutral-50)`,
+            // soft
+            softColor: `var(--${prefix}-palette-secondary-700)`,
+            softBg: `var(--${prefix}-palette-secondary-100)`,
+            softHoverBg: `var(--${prefix}-palette-secondary-200)`,
+            softActiveColor: `var(--${prefix}-palette-secondary-800)`,
+            softActiveBg: `var(--${prefix}-palette-secondary-300)`,
+            softDisabledColor: `var(--${prefix}-palette-neutral-300)`,
+            softDisabledBg: `var(--${prefix}-palette-neutral-25)`,
+            // solid
+            solidColor: `var(--${prefix}-palette-common-white)`,
+            solidBg: `var(--${prefix}-palette-button-secondary-500)`,
+            solidHoverBg: `var(--${prefix}-palette-button-secondary-600)`,
+            solidActiveBg: `var(--${prefix}-palette-button-secondary-700)`,
+            solidDisabledColor: `var(--${prefix}-palette-neutral-300)`,
+            solidDisabledBg: `var(--${prefix}-palette-neutral-50)`,
+          },
+          ...paletteLight,
+        }
+      }
+    },
+    fontFamily: {
+      display: 'Bebas Neue', // applies to `h1`–`h2`
+      secondary: "Poppins", // applies to `h3` - `h4` and `title-*`
+      body: 'Montserrat', // applies to `body-*`
+    },
+    fontSize: {
+      xs: "0.875rem",
+      sm: "1rem",
+      md: "1.25rem",
+      lg: "1.5rem",
+      xl: "1.75rem",
+      xl2: "2.25rem",
+      xl3: "2.75rem",
+      xl4: "3.25rem",
+      xl5: "3.75rem",
+      xl6: "4.5rem",
+      xl7: "5.25rem",
+    },
+    typography: {
+      h1: {
+        letterSpacing: "0.01em",
       },
-      secondary: {
-        // plain
-        plainColor: `var(--${prefix}-palette-button-secondary-500)`,
-        plainHoverBg: `var(--${prefix}-palette-button-secondary-50)`,
-        plainActiveBg: `var(--${prefix}-palette-button-secondary-100)`,
-        plainDisabledColor: `var(--${prefix}-palette-neutral-100)`,
-        // outline
-        outlinedColor: `var(--${prefix}-palette-secondary-500)`,
-        outlinedBorder: `var(--${prefix}-palette-secondary-300)`,
-        outlinedHoverBg: `var(--${prefix}-palette-secondary-100)`,
-        outlinedActiveBg: `var(--${prefix}-palette-secondary-200)`,
-        outlinedDisabledColor: `var(--${prefix}-palette-neutral-100)`,
-        outlinedDisabledBorder: `var(--${prefix}-palette-neutral-50)`,
-        // soft
-        softColor: `var(--${prefix}-palette-secondary-700)`,
-        softBg: `var(--${prefix}-palette-secondary-100)`,
-        softHoverBg: `var(--${prefix}-palette-secondary-200)`,
-        softActiveColor: `var(--${prefix}-palette-secondary-800)`,
-        softActiveBg: `var(--${prefix}-palette-secondary-300)`,
-        softDisabledColor: `var(--${prefix}-palette-neutral-300)`,
-        softDisabledBg: `var(--${prefix}-palette-neutral-25)`,
-        // solid
-        solidColor: `var(--${prefix}-palette-common-white)`,
-        solidBg: `var(--${prefix}-palette-button-secondary-500)`,
-        solidHoverBg: `var(--${prefix}-palette-button-secondary-600)`,
-        solidActiveBg: `var(--${prefix}-palette-button-secondary-700)`,
-        solidDisabledColor: `var(--${prefix}-palette-neutral-300)`,
-        solidDisabledBg: `var(--${prefix}-palette-neutral-50)`,
+      h2: {
+        letterSpacing: "0.01em",
       },
-    }
-  },
-  fontFamily: {
-    display: 'Bebas Neue', // applies to `h1`–`h2`
-    secondary: "Poppins", // applies to `h3` - `h4` and `title-*`
-    body: 'Montserrat', // applies to `body-*`
-  },
-  fontSize: {
-    xs: "0.875rem",
-    sm: "1rem",
-    md: "1.25rem",
-    lg: "1.5rem",
-    xl: "1.75rem",
-    xl2: "2.25rem",
-    xl3: "2.75rem",
-    xl4: "3.25rem",
-    xl5: "3.75rem",
-    xl6: "4.5rem",
-    xl7: "5.25rem",
-  },
-  typography: {
-    h1: {
-      letterSpacing: "0.01em",
+      h3: {
+        fontFamily: `var(--${prefix}-fontFamily-secondary)`,
+        letterSpacing: "0.01em",
+        color: `var(--${prefix}-fontFamily-secondary)`,
+      },
+      h4: {
+        fontFamily: "var(--tpc-00-fontFamily-secondary)",
+        letterSpacing: "0.01em",
+        color: `var(--${prefix}-palette-text-secondary)`,
+      },
+      "title-lg": {
+        fontFamily: "var(--tpc-00-fontFamily-secondary)",
+        color: `var(--${prefix}-palette-text-secondary)`,
+      },
+      "title-md": {
+        fontFamily: "var(--tpc-00-fontFamily-secondary)",
+        color: `var(--${prefix}-palette-text-secondary)`,
+      },
+      "title-sm": {
+        fontFamily: "var(--tpc-00-fontFamily-secondary)",
+        color: `var(--${prefix}-palette-text-secondary)`,
+      },
+      "body-lg": {
+        color: `var(--${prefix}-palette-text-body)`,
+      },
+      "body-md": {
+        color: `var(--${prefix}-palette-text-body)`,
+      },
+      "body-sm": {
+        color: `var(--${prefix}-palette-text-body)`,
+      },
+      "body-xs": {
+        color: `var(--${prefix}-palette-text-body)`,
+      }
     },
-    h2: {
-      letterSpacing: "0.01em",
-    },
-    h3: {
-      fontFamily: `var(--${prefix}-fontFamily-secondary)`,
-      letterSpacing: "0.01em",
-      color: `var(--${prefix}-fontFamily-secondary)`,
-    },
-    h4: {
-      fontFamily: "var(--tpc-00-fontFamily-secondary)",
-      letterSpacing: "0.01em",
-      color: `var(--${prefix}-palette-text-secondary)`,
-    },
-    "title-lg": {
-      fontFamily: "var(--tpc-00-fontFamily-secondary)",
-      color: `var(--${prefix}-palette-text-secondary)`,
-    },
-    "title-md": {
-      fontFamily: "var(--tpc-00-fontFamily-secondary)",
-      color: `var(--${prefix}-palette-text-secondary)`,
-    },
-    "title-sm": {
-      fontFamily: "var(--tpc-00-fontFamily-secondary)",
-      color: `var(--${prefix}-palette-text-secondary)`,
-    },
-    "body-lg": {
-      color: `var(--${prefix}-palette-text-body)`,
-    },
-    "body-md": {
-      color: `var(--${prefix}-palette-text-body)`,
-    },
-    "body-sm": {
-      color: `var(--${prefix}-palette-text-body)`,
-    },
-    "body-xs": {
-      color: `var(--${prefix}-palette-text-body)`,
-    }
-  },
-});
+  }
+};
 
-const tpc00 = commonTheme("tpc-00");
-export const defaultTheme = extendTheme({
-  ...tpc00,
+export const defaultTheme = extendTheme(createTheme("tpc-default", {
   colorSchemes: {
     light: {
       palette: {
-        neutral: {
-          ...brandShades.green04
-        },
-        primary: {
-          ...brandShades.green02,
-          ...tpc00.colorSchemes.palette.primary
-        },
-        secondary: {
-          ...brandShades.orange01,
-          ...tpc00.colorSchemes.palette.secondary
-        },
+        neutral: brandShades.green04,
+        primary: brandShades.green02,
+        secondary: brandShades.orange01,
         text: {
           primary: brandShades.green04[500],
           secondary: brandShades.green02[500],
@@ -286,28 +283,18 @@ export const defaultTheme = extendTheme({
       },
     },
   },
-});
+}));
 
-const tpc01 = commonTheme("tpc-01");
-export const light = extendTheme({
-  ...tpc01,
+export const light = extendTheme(createTheme("tpc-light", {
   colorSchemes: {
     light: {
       palette: {
         background: {
           body: brandShades.yellow01[500],
         },
-        neutral: {
-          ...brandShades.green04
-        },
-        primary: {
-          ...brandShades.green02,
-          ...tpc01.colorSchemes.palette.primary
-        },
-        secondary: {
-          ...brandShades.orange01,
-          ...tpc01.colorSchemes.palette.secondary
-        },
+        neutral: brandShades.green04,
+        primary: brandShades.green02,
+        secondary: brandShades.orange01,
         text: {
           primary: brandShades.green04[500],
           secondary: brandShades.green04[500],
@@ -337,28 +324,18 @@ export const light = extendTheme({
       },
     },
   },
-});
+}));
 
-const tpc02 = commonTheme("tpc-02");
-export const colored = extendTheme({
-  ...tpc02,
+export const colored = extendTheme(createTheme("tpc-colored", {
   colorSchemes: {
     light: {
       palette: {
         background: {
           body: brandShades.green01[500],
         },
-        neutral: {
-          ...brandShades.green04
-        },
-        primary: {
-          ...brandShades.green02,
-          ...tpc02.colorSchemes.palette.primary
-        },
-        secondary: {
-          ...brandShades.orange01,
-          ...tpc02.colorSchemes.palette.secondary
-        },
+        neutral: brandShades.green04,
+        primary: brandShades.green02,
+        secondary: brandShades.orange01,
         text: {
           primary: brandShades.green04[500],
           secondary: brandShades.orange01[500],
@@ -388,28 +365,18 @@ export const colored = extendTheme({
       },
     },
   },
-});
+}));
 
-const tpc03 = commonTheme("tpc-03");
-export const dark = extendTheme({
-  ...tpc03,
+export const dark = extendTheme(createTheme("tpc-dark", {
   colorSchemes: {
     light: {
       palette: {
         background: {
           body: brandShades.green03[500],
         },
-        neutral: {
-          ...brandShades.green04
-        },
-        primary: {
-          ...brandShades.green02,
-          ...tpc03.colorSchemes.palette.primary
-        },
-        secondary: {
-          ...brandShades.orange01,
-          ...tpc03.colorSchemes.palette.secondary
-        },
+        neutral: brandShades.green04,
+        primary: brandShades.green02,
+        secondary: brandShades.orange01,
         text: {
           primary: brandShades.yellow02[500],
           secondary: brandShades.yellow02[500],
@@ -422,45 +389,19 @@ export const dark = extendTheme({
         }
       },
     },
-    dark: {
-      palette: {
-        primary: {
-          50: '#C0CCD9',
-          100: '#A5B8CF',
-          200: '#6A96CA',
-          300: '#4886D0',
-          400: '#2178DD',
-          500: '#096BDE',
-          600: '#1B62B5',
-          700: '#265995',
-          800: '#2F4968',
-          900: '#2F3C4C',
-        },
-      },
-    },
   },
-});
+}));
 
-const tpc04 = commonTheme("tpc-04");
-export const darkest = extendTheme({
-  ...tpc04,
+export const darkest = extendTheme(createTheme("tpc-darkest", {
   colorSchemes: {
     light: {
       palette: {
         background: {
           body: brandShades.green04[500],
         },
-        neutral: {
-          ...brandShades.green04
-        },
-        primary: {
-          ...brandShades.green02,
-          ...tpc04.colorSchemes.palette.primary
-        },
-        secondary: {
-          ...brandShades.orange01,
-          ...tpc04.colorSchemes.palette.secondary
-        },
+        neutral: brandShades.green04,
+        primary: brandShades.green02,
+        secondary: brandShades.orange01,
         text: {
           primary: brandShades.yellow02[500],
           secondary: brandShades.green02[500],
@@ -490,5 +431,4 @@ export const darkest = extendTheme({
       },
     },
   },
-});
-console.log(darkest);
+}));

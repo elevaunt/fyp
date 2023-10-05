@@ -12,12 +12,12 @@ export default function ContentWithList({
   subtitle,
   blurb,
   img,
-  sheetVariant = "plain",
+  variant = "plain",
   sheetSx = { p: 4, boxShadow: 'lg', },
 }) {
   const imgRatio = img?.width ? img.width / img.height : 3 / 4;
   return (
-    <Sheet variant={sheetVariant} sx={sheetSx}>
+    <Sheet variant={variant} sx={sheetSx}>
       {title && <Typography level="h2" fontSize={"xl4"} >{title}</Typography>}
       {subtitle && <Typography level="h3" >{subtitle}</Typography>}
       {blurb && <Typography level="body-lg" textColor="text.secondary" lineHeight="lg">{blurb}</Typography>}

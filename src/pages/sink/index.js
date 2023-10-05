@@ -17,12 +17,26 @@ import Content01 from "../../components/Content/Content01";
 import ContentWithList from "../../components/Content/ContentWithList";
 import Section from "../../components/Base/Section";
 import TwoSidedLayout from "../../components/Base/TwoSidedLayout";
-import { Button, Card, Container, Stack, styled, Typography } from "@mui/joy";
+import { Button, ButtonGroup, Card, Container, Stack, styled, Typography } from "@mui/joy";
 import Product_FullWidth from "../../components/Product/ProductFullWidth";
 import { ArrowForward } from "@mui/icons-material";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import IconList from "../../components/Base/IconList";
 import ProductCard from "../../components/Product/ProductCard";
+
+const Buttons = (props) => (
+  <div>
+    <Typography level="title-lg" sx={{ py: 2 }}>{props.color.toUpperCase()} ({props.size})</Typography>
+    <Stack direction={"row"} gap={2}>
+      <Button variant="plain" {...props}>Plain</Button>
+      <Button variant="outlined" {...props}>Outlined</Button>
+      <Button variant="soft" {...props}>Soft</Button>
+      <Button variant="solid" {...props}>Solid</Button>
+    </Stack>
+  </div>
+)
+
 
 // eslint-disable-next-line
 export const KitchenSinkTemplate = ({
@@ -43,19 +57,15 @@ export const KitchenSinkTemplate = ({
     <>
       <Container>
         <Typography level="h2">Buttons</Typography>
-        <Typography level="title-lg" sx={{py: 2}}>Primary</Typography>
-        <Stack direction={"row"} gap={2}>
-          <Button variant="plain">Plain</Button>
-          <Button variant="outlined">Outlined</Button>
-          <Button variant="soft">Soft</Button>
-          <Button variant="solid">Solid</Button>
+        <Stack direction={["column", "column", "row",]} gap={4}>
+          <Buttons color="primary" size="md" />
+          <Buttons color="secondary" size="md" />
         </Stack>
-        <Typography level="title-lg" sx={{ py: 2 }}>Secondary</Typography>
-        <Stack direction={"row"} gap={2}>
-          <Button variant="plain" color="secondary">Plain</Button>
-          <Button variant="outlined" color="secondary">Outlined</Button>
-          <Button variant="soft" color="secondary">Soft</Button>
-          <Button variant="solid" color="secondary">Solid</Button>
+        <Stack direction={["column", "column", "row",]} gap={4} flexWrap={"wrap"}>
+          <Buttons color="neutral" size="md" />
+          <Buttons color="warning" size="md" />
+          <Buttons color="danger" size="md" />
+          <Buttons color="success" size="md" />
         </Stack>
         <Typography level="title-lg" sx={{ py: 2 }}>Disabled</Typography>
         <Stack direction={"row"} gap={2} sx={{pt: 1}}>
@@ -64,8 +74,15 @@ export const KitchenSinkTemplate = ({
           <Button variant="soft" color="secondary" disabled >Soft</Button>
           <Button variant="solid" color="secondary" disabled >Solid</Button>
         </Stack>
+        <Typography level="title-lg" sx={{ py: 2 }}>Button Group</Typography>
+        <Stack direction={"row"} gap={2} sx={{ pt: 1 }}>
+          <ButtonGroup spacing={2} variant="solid">
+            <Button startDecorator={<OtherHousesIcon />} size={"lg"} color="primary">Primary</Button>
+            <Button startDecorator={<OtherHousesIcon />} size={"lg"} color="secondary">Secondary</Button>
+          </ButtonGroup>
+        </Stack>
       </Container>
-      <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} />
+      <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} maxWidth="xl" />
       <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} theme={"light"} />
       <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} theme={"colored"} />
       <HeroLeft01 title={"Find Your Power"} subtitle={subheading} blurb={description} img={heroImage} theme={"dark"} />
@@ -77,8 +94,8 @@ export const KitchenSinkTemplate = ({
         <Container sx={{ py: 16 }}>
           <Typography level="h2" fontSize={"xl4"}>Icon List Section</Typography>
           <Stack direction={["column", "column", "row"]} gap={4}>
-            <ContentWithList title={heading} blurb={description} sheetVariant={"soft"} />
-            <ContentWithList title={heading} blurb={description} />
+            <ContentWithList title={heading} blurb={description} variant={"soft"} />
+            <ContentWithList title={heading} blurb={description} variant={"plain"}/>
           </Stack>
         </Container>
       </Section>
