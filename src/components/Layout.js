@@ -10,7 +10,7 @@ import "../configs/fonts.config"
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { CssVarsProvider } from '@mui/joy/styles';
-import { lightestJoy } from "../configs/themes.mui.config";
+import { light } from "../configs/themes.mui.config";
 import Box from '@mui/material/Box';
 import ResponsiveAppBar from "./ResponsiveAppBar";
 
@@ -66,7 +66,7 @@ import ResponsiveAppBar from "./ResponsiveAppBar";
 
 export function TemplateWrapper({ nav = "full", children }) {
   return (
-    <CssVarsProvider theme={lightestJoy}>
+    <CssVarsProvider theme={light}>
       <Box
         sx={{
           display: 'flex',

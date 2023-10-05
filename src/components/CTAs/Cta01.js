@@ -27,7 +27,7 @@ export default function Cta01({
       imgBasis={"25%"} 
       py={2}
       maxWidth={"xl"}
-      theme={"lightestJoy"}
+      theme={"light"}
     >
       <Stack direction={"row"} alignItems="center" gap={2} justifyContent={"space-between"} width={"100%"}>
         <Stack direction={"column"}>
